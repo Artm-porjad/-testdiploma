@@ -1,0 +1,122 @@
+title = "Measurements of horizontal, vertical angles and lengths of the sides of tacheometric traverse"
+
+["D"]
+    D100 = -0.2
+    D150 = -0.2
+    D200 = -0.3
+
+["ПП26"]
+    i = 1.30
+
+    ["ПП26"."hor_angle"]
+    l_prev_angle = "0°01.5'"
+    l_next_angle = "168°14.5'"
+    r_prev_angle = "181°31.0'"
+    r_next_angle = "349°44.5'"
+
+    ["ПП26"."vert_angle"]
+    prev_V = ""
+    l_prev_angle = ""
+    r_prev_angle = ""
+    next_V= 1
+    l_next_angle = "1°23.0'"
+    r_next_angle = "-1°24.0'"
+
+
+    ["ПП26"."l"]
+    l_prev_length = ""
+    r_prev_length = ""
+    l_next_length = "101.5"
+    r_next_length = "101.5"
+
+[I]
+    i = 1.45
+
+    [I."hor_angle"]
+    l_prev_angle = "0°02.0'"
+    l_next_angle = "130°24.0'"
+    r_prev_angle = "182°22.5'"
+    r_next_angle = "312°43.5'"
+
+    [I."vert_angle"]
+    prev_V = 2
+    l_prev_angle = "-1°14.0'"
+    r_prev_angle = "1°15.0'"
+    next_V= 2
+    l_next_angle = "2°17.0'"
+    r_next_angle = "-2°18.0'"
+
+    [I."l"]
+    l_prev_length = "101.5"
+    r_prev_length = "101.2"
+    l_next_length = "110.3"
+    r_next_length = "110.1"
+
+[II]
+    i = 1.36
+
+    [II."hor_angle"]
+    l_prev_angle = "0°03.0'"
+    l_next_angle = "98°02.0'"
+    r_prev_angle = "181°23.5'"
+    r_next_angle = "279°22.0'"
+
+    [II."vert_angle"]
+    prev_V = 2
+    l_prev_angle = "-1°40.0'"
+    r_prev_angle = "1°39.0'"
+    next_V= 2
+    l_next_angle = "1°19.5'"
+    r_next_angle = "-1°20.5'"
+
+    [II."l"]
+    l_prev_length = "110.2"
+    r_prev_length = "110.0"
+    l_next_length = "197.0"
+    r_next_length = "196.4"
+
+[III]
+    i = 1.52
+
+    [III."hor_angle"]
+    l_prev_angle = "0°02.5'"
+    l_next_angle = "306°39.5'"
+    r_prev_angle = "182°23.0'"
+    r_next_angle = "128°59.0'"
+
+    [III."vert_angle"]
+    prev_V = 1.5
+    l_prev_angle = "-1°08.5'"
+    r_prev_angle = "1°09.0'"
+    next_V= 2
+    l_next_angle = "-1°56.0'"
+    r_next_angle = "1°57.0'"
+
+    [III."l"]
+    l_prev_length = "196.6"
+    r_prev_length = "196.6"
+    l_next_length = "189.7"
+    r_next_length = "189.3"
+
+["ПП68"]
+    i = 1.46
+
+    ["ПП68"."hor_angle"]
+    l_prev_angle = "0°03.5'"
+    l_next_angle = "218°36.0'"
+    r_prev_angle = "182°24.0'"
+    r_next_angle = "40°55.5'"
+
+    ["ПП68"."vert_angle"]
+    prev_V = 1.5
+    l_prev_angle = "2°07.5'"
+    r_prev_angle = "-2°06.5'"
+    next_V= ""
+    l_next_angle = ""
+    r_next_angle = ""
+
+    ["ПП68"."l"]
+    l_prev_length = "189.5"
+    r_prev_length = "188.9"
+    l_next_length = ""
+    r_next_length = ""
