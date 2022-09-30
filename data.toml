@@ -5,6 +5,20 @@ title = "Measurements of horizontal, vertical angles and lengths of the sides of
     D150 = -0.2
     D200 = -0.3
 
+["dir_angles"]
+    initial_angle = "218°51.4'"
+    final_angle = "240°32.1'"
+
+["coords"]
+    initial_x = 2168.6
+    initial_y = 1592.1
+    final_x = 1850.5
+    final_y = 1706.5
+
+["heights"]
+    initial_h = 636.84
+    final_h = 640.52
+
 ["ПП26"]
     i = 1.30
 
