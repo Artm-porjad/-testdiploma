@@ -98,8 +98,8 @@ def get_x_y(initial_dir_angle, final_dir_angle, angles, S, start_x_y):
     E_dYvi = sum(dY)
     E_dXteo = round(start_x_y[2] - start_x_y[0], 1)
     E_dYteo = round(start_x_y[3] - start_x_y[1], 1)
-    fs_x = round(E_dXvi-E_dXteo, 1)
-    fs_y = round(E_dYvi-E_dYteo, 1)
+    fs_x = round(E_dXvi - E_dXteo, 1)
+    fs_y = round(E_dYvi - E_dYteo, 1)
     f_abs = round(sqrt(fs_x ** 2 + fs_y ** 2), 1)
     new_dX = []
     new_dY = []
@@ -108,10 +108,10 @@ def get_x_y(initial_dir_angle, final_dir_angle, angles, S, start_x_y):
     coords_x = [start_x_y[0]]
     coords_y = [start_x_y[1]]
     for j in range(0, n - 1):
-        new_dX.append(round(dX[j]+dfs_x, 1))
+        new_dX.append(round(dX[j] + dfs_x, 1))
         new_dY.append(round(dY[j] + dfs_y, 1))
-        if j != n-2:
-            coords_x.append(round(coords_x[j]+new_dX[j], 1))
+        if j != n - 2:
+            coords_x.append(round(coords_x[j] + new_dX[j], 1))
             coords_y.append(round(coords_y[j] + new_dY[j], 1))
     coords_x.append(start_x_y[2])
     coords_y.append(start_x_y[3])
@@ -127,12 +127,11 @@ def get_final_h(h_array, s_array, ini_and_fin_H):
     new_h_array = []
     H_array = [ini_and_fin_H[0]]
     for j in range(n):
-        new_h_array.append(round(h_array[j] + fh/n, 2))
-        if j != n-1:
+        new_h_array.append(round(h_array[j] + fh / n, 2))
+        if j != n - 1:
             H_array.append(round(H_array[j] + new_h_array[j], 2))
     H_array.append(ini_and_fin_H[1])
     return H_array
-
 
 
 if __name__ == "__main__":
@@ -140,10 +139,10 @@ if __name__ == "__main__":
         doc = load(fp)
         k = list(doc)[5:]
     an = []
-    # for point in k:
-    #     a = get_mean_hor_angle(doc[point]["hor_angle"]["l_prev_angle"], doc[point]["hor_angle"]["l_next_angle"],
-    #                            doc[point]["hor_angle"]["r_prev_angle"], doc[point]["hor_angle"]["r_next_angle"])
-    #     an.append(a)
+    for point in k:
+        a = get_mean_hor_angle(doc[point]["hor_angle"]["l_prev_angle"], doc[point]["hor_angle"]["l_next_angle"],
+                               doc[point]["hor_angle"]["r_prev_angle"], doc[point]["hor_angle"]["r_next_angle"])
+        an.append(a)
 
     h_arr = []
     s_arr = []
@@ -166,9 +165,16 @@ if __name__ == "__main__":
         h_arr.append(h)
         s_arr.append(s)
 
-    # initial_x_y = [doc["coords"]["initial_x"], doc["coords"]["initial_y"], doc["coords"]["final_x"],
-    #                doc["coords"]["final_y"]]
-    # get_x_y(doc["dir_angles"]["initial_angle"], doc["dir_angles"]["final_angle"], an, s_arr, initial_x_y)
-
+    initial_x_y = [doc["coords"]["initial_x"], doc["coords"]["initial_y"], doc["coords"]["final_x"],
+                   doc["coords"]["final_y"]]
+    x, y = get_x_y(doc["dir_angles"]["initial_angle"], doc["dir_angles"]["final_angle"], an, s_arr, initial_x_y)
+    for i in range(len(x)):
+        print(x[i], y[i])
     initial_and_final_H = [doc["heights"]["initial_h"], doc["heights"]["final_h"]]
     H_arr = get_final_h(h_arr, s_arr, initial_and_final_H)
+    print(H_arr)
+
+    plate_coords = [round(doc["coords"]["initial_x"] - doc["coords"]["final_x"]),
+                    round(doc["coords"]["initial_y"] - doc["coords"]["final_y"])]
+
+    print(plate_coords)
