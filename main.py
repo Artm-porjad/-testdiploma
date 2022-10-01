@@ -134,6 +134,71 @@ def get_final_h(h_array, s_array, ini_and_fin_H):
     return H_array
 
 
+def get_matrix(coords, H_arr):
+    import csv
+
+    coords2 = []
+
+    for coord in coords:
+        coords2.append([int(coord[0]), int(coord[1])])
+    # coords2 = [
+    #     [2168.6, 1592.1],
+    #     [2078.3, 1545.8],
+    #     [1976.7, 1587.7],
+    #     [2026.0, 1777.5],
+    #     [1850.5, 1706.5]
+    # ]
+
+    n = len(coords2)
+
+    coords2 = sorted(coords2, key=lambda x: x[0])
+    # coords2 = [
+    #     [1850, 1706],
+    #     [1976, 1587],
+    #     [2026, 1777],
+    #     [2078, 1545],
+    #     [2168, 1592]
+    # ]
+    max_y = max([y[1] for y in coords2])
+
+    min_y = min([y[1] for y in coords2])
+    s = min_y - 1
+    e = max_y + 1
+    fieldnames = [str(i) for i in range(s, e)]
+
+    cor = []
+    f = None
+    d = {}
+    for i in range(n):
+        if coords2[i][0] != f:
+            f = coords2[i][0]
+            if i != 0:
+                for j in fieldnames:
+                    if not j in d.keys():
+                        d[j] = 0
+                cor.append(d)
+                d = {}
+                if i != 0:
+                    if coords2[i - 1][0] != coords2[i][0] - 1:
+                        for j in range(coords2[i - 1][0], coords2[i][0]):
+                            for z in fieldnames:
+                                d[z] = 0
+                            cor.append(d)
+                            d = {}
+        d[str(coords2[i][1])] = '1'
+    else:
+        for j in fieldnames:
+            if not j in d.keys():
+                d[j] = 0
+        cor.append(d)
+
+    with open('eggs.csv', 'w', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for i in range(len(cor)):
+            writer.writerow(cor[i])
+
+
 if __name__ == "__main__":
     with open('data.toml', 'r', encoding='utf-8') as fp:
         doc = load(fp)
@@ -168,13 +233,14 @@ if __name__ == "__main__":
     initial_x_y = [doc["coords"]["initial_x"], doc["coords"]["initial_y"], doc["coords"]["final_x"],
                    doc["coords"]["final_y"]]
     x, y = get_x_y(doc["dir_angles"]["initial_angle"], doc["dir_angles"]["final_angle"], an, s_arr, initial_x_y)
+    coords = []
     for i in range(len(x)):
-        print(x[i], y[i])
+        coords.append([x[i], y[i]])
     initial_and_final_H = [doc["heights"]["initial_h"], doc["heights"]["final_h"]]
     H_arr = get_final_h(h_arr, s_arr, initial_and_final_H)
-    print(H_arr)
+    get_matrix(coords, H_arr)
 
-    plate_coords = [round(doc["coords"]["initial_x"] - doc["coords"]["final_x"]),
-                    round(doc["coords"]["initial_y"] - doc["coords"]["final_y"])]
-
-    print(plate_coords)
+    # plate_coords = [round(doc["coords"]["initial_x"] - doc["coords"]["final_x"]),
+    #                 round(doc["coords"]["initial_y"] - doc["coords"]["final_y"])]
+    #
+    # print(plate_coords)
