@@ -43,6 +43,78 @@ title = "Measurements of horizontal, vertical angles and lengths of the sides of
     l_next_length = "101.5"
     r_next_length = "101.5"
 
+    ["ПП26"."data"]
+        i = 1.37
+        H = 636.64
+        L = "-3°06,0'"
+        R = "3°06,0'"
+
+        ["ПП26"."data"."1"]
+        hor_angle = "180°56'"
+        vert_angle = "-0°59'"
+        V = 1.37
+        D = 145
+
+        ["ПП26"."data"."2"]
+        hor_angle = "148°57'"
+        vert_angle = "-0°36'"
+        V = 2
+        D = 50.2
+
+        ["ПП26"."data"."3"]
+        hor_angle = "198°14'"
+        vert_angle = "-0°09.5'"
+        V = 2
+        D = 141.6
+
+        ["ПП26"."data"."4"]
+        hor_angle = "216°05'"
+        vert_angle = "0°50,5'"
+        V = 2.5
+        D = 58.4
+
+        ["ПП26"."data"."5"]
+        hor_angle = "211°52'"
+        vert_angle = "-0°09'"
+        V = 2
+        D = 196.2
+
+        ["ПП26"."data"."6"]
+        hor_angle = "230°20'"
+        vert_angle = "+1°20.5'"
+        V = 1.37
+        D = 200.1
+
+        ["ПП26"."data"."7"]
+        hor_angle = "40°01'"
+        vert_angle = "+1°24.5'"
+        V = 2.50
+        D = 35
+
+        ["ПП26"."data"."8"]
+        hor_angle = "91°58'"
+        vert_angle = "0°31'"
+        V = 2
+        D = 107
+
+        ["ПП26"."data"."9"]
+        hor_angle = "54°12'"
+        vert_angle = "-0°2.5'"
+        V = 1.37
+        D = 83.8
+
+        ["ПП26"."data"."10"]
+        hor_angle = "233°32'"
+        vert_angle = "+2°9.5'"
+        V = 2.5
+        D = 159
+
+        ["ПП26"."data"."11"]
+        hor_angle = "262°31'"
+        vert_angle = "+2°48.5'"
+        V = 2
+        D = 120.2
+
 [I]
     i = 1.45
 
