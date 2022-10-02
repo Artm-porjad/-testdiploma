@@ -115,7 +115,7 @@ def get_x_y(initial_dir_angle, final_dir_angle, angles, S, start_x_y):
             coords_y.append(round(coords_y[j] + new_dY[j], 1))
     coords_x.append(start_x_y[2])
     coords_y.append(start_x_y[3])
-    return coords_x, coords_y
+    return direct_angles, coords_x, coords_y
 
 
 def get_final_h(h_array, s_array, ini_and_fin_H):
@@ -136,42 +136,35 @@ def get_final_h(h_array, s_array, ini_and_fin_H):
 
 def get_matrix(coords, H_arr):
     import csv
-
+    n = len(coords)
     coords2 = []
 
-    for coord in coords:
-        coords2.append([int(coord[0]), int(coord[1])])
+    for i in range(n):
+        coords2.append([int(coords[i][0]), int(coords[i][1]), H_arr[i]])
+    print(coords2)
     # coords2 = [
-    #     [2168.6, 1592.1],
-    #     [2078.3, 1545.8],
-    #     [1976.7, 1587.7],
-    #     [2026.0, 1777.5],
-    #     [1850.5, 1706.5]
+    #     [21686, 15921, 636.84],
+    #     [20783, 15458, 639.61],
+    #     [19767, 15877, 643.46],
+    #     [20260, 17775, 647.4],
+    #     [18505, 17065, 640.52]
     # ]
 
-    n = len(coords2)
+    coords2 = sorted(coords2, key=lambda y: y[1])
 
-    coords2 = sorted(coords2, key=lambda x: x[0])
-    # coords2 = [
-    #     [1850, 1706],
-    #     [1976, 1587],
-    #     [2026, 1777],
-    #     [2078, 1545],
-    #     [2168, 1592]
-    # ]
-    max_y = max([y[1] for y in coords2])
+    max_x = max([round(x[0]) for x in coords2])
 
-    min_y = min([y[1] for y in coords2])
-    s = min_y - 1
-    e = max_y + 1
+    min_x = min([round(x[0]) for x in coords2])
+    s = min_x - 2
+    e = max_x + 2
     fieldnames = [str(i) for i in range(s, e)]
 
     cor = []
     f = None
     d = {}
     for i in range(n):
-        if coords2[i][0] != f:
-            f = coords2[i][0]
+        if coords2[i][1] != f:
+            f = coords2[i][1]
             if i != 0:
                 for j in fieldnames:
                     if not j in d.keys():
@@ -179,13 +172,13 @@ def get_matrix(coords, H_arr):
                 cor.append(d)
                 d = {}
                 if i != 0:
-                    if coords2[i - 1][0] != coords2[i][0] - 1:
-                        for j in range(coords2[i - 1][0], coords2[i][0]):
+                    if coords2[i - 1][1] != coords2[i][1] - 1:
+                        for j in range(coords2[i - 1][1]+1, coords2[i][1]):
                             for z in fieldnames:
                                 d[z] = 0
                             cor.append(d)
                             d = {}
-        d[str(coords2[i][1])] = '1'
+        d[str(coords2[i][0])] = str(coords2[i][2])
     else:
         for j in fieldnames:
             if not j in d.keys():
@@ -197,6 +190,30 @@ def get_matrix(coords, H_arr):
         writer.writeheader()
         for i in range(len(cor)):
             writer.writerow(cor[i])
+
+
+def get_x_y_points_on_station(station_direct_angle, doc, station_coords):
+    i = doc["i"]
+    H = doc["H"]
+    L = doc["L"]
+    R = doc["R"]
+
+
+    k = list(doc)[5:]
+    dX = []
+    dY = []
+    print(station_direct_angle, '----------------')
+    for point in k:
+        v = convert_str_into_degrees(doc[point]["vert_angle"]) + convert_str_into_degrees(doc["M0"])
+        S = round(doc[point]["D"] * cos(radians(v)) ** 2, 1)
+        local_direct_angle = station_direct_angle + convert_str_into_degrees(doc[point]["hor_angle"]) - convert_str_into_degrees("180°0'")
+        dX.append(round(-1 * S * cos(radians(local_direct_angle)), 1))
+        dY.append(round(-1 * S * sin(radians(local_direct_angle)), 1))
+
+    coords = []
+    for i in range(len(dX)):
+        coords.append([round(dX[i]+station_coords[0], 1), round(dY[i]+station_coords[1], 1)])
+    return coords[:11]
 
 
 if __name__ == "__main__":
@@ -232,12 +249,19 @@ if __name__ == "__main__":
 
     initial_x_y = [doc["coords"]["initial_x"], doc["coords"]["initial_y"], doc["coords"]["final_x"],
                    doc["coords"]["final_y"]]
-    x, y = get_x_y(doc["dir_angles"]["initial_angle"], doc["dir_angles"]["final_angle"], an, s_arr, initial_x_y)
+    D_angles, x, y = get_x_y(doc["dir_angles"]["initial_angle"], doc["dir_angles"]["final_angle"], an, s_arr, initial_x_y)
     coords = []
     for i in range(len(x)):
         coords.append([x[i], y[i]])
     initial_and_final_H = [doc["heights"]["initial_h"], doc["heights"]["final_h"]]
     H_arr = get_final_h(h_arr, s_arr, initial_and_final_H)
+    print(coords)
+    for i in range(1, 2):
+        coords.extend(get_x_y_points_on_station(D_angles[0], doc["ПП26"]["data"], coords[0]))
+        print(coords)
+        # H_arr.append(634.34)
+    H_arr = [1, 1, 1, 1, 1, 3,3,3,3,3,3,3,3,3,3,3]
+    # H_arr = [1, 1, 1, 1, 1]
     get_matrix(coords, H_arr)
 
     # plate_coords = [round(doc["coords"]["initial_x"] - doc["coords"]["final_x"]),

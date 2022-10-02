@@ -45,15 +45,16 @@ title = "Measurements of horizontal, vertical angles and lengths of the sides of
 
     ["ПП26"."data"]
         i = 1.37
-        H = 636.64
-        L = "-3°06,0'"
-        R = "3°06,0'"
+        H = 636.84
+        L = "-3°06.0'"
+        R = "3°06.0'"
+        M0 = "0°0'"
 
         ["ПП26"."data"."1"]
         hor_angle = "180°56'"
         vert_angle = "-0°59'"
         V = 1.37
-        D = 145
+        D = 145.8
 
         ["ПП26"."data"."2"]
         hor_angle = "148°57'"
@@ -69,7 +70,7 @@ title = "Measurements of horizontal, vertical angles and lengths of the sides of
 
         ["ПП26"."data"."4"]
         hor_angle = "216°05'"
-        vert_angle = "0°50,5'"
+        vert_angle = "0°50.5'"
         V = 2.5
         D = 58.4
 
