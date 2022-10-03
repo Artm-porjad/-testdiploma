@@ -256,11 +256,11 @@ if __name__ == "__main__":
     initial_and_final_H = [doc["heights"]["initial_h"], doc["heights"]["final_h"]]
     H_arr = get_final_h(h_arr, s_arr, initial_and_final_H)
     print(coords)
-    for i in range(1, 2):
-        coords.extend(get_x_y_points_on_station(D_angles[0], doc["ПП26"]["data"], coords[0]))
+    for i in range(1, 4):
+        coords.extend(get_x_y_points_on_station(D_angles[i], doc["ПП26"]["data"], coords[i]))
         print(coords)
         # H_arr.append(634.34)
-    H_arr = [1, 1, 1, 1, 1, 3,3,3,3,3,3,3,3,3,3,3]
+    H_arr = [1, 1, 1, 1, 1, 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3, 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
     # H_arr = [1, 1, 1, 1, 1]
     get_matrix(coords, H_arr)
 
