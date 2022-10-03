@@ -139,6 +139,73 @@ title = "Measurements of horizontal, vertical angles and lengths of the sides of
     l_next_length = "110.3"
     r_next_length = "110.1"
 
+    [I."data"]
+        i = 1.36
+        H = 639.61
+        L = "2°36.5'"
+        R = "-2°37.5'"
+        M0 = "-0°0.5'"
+
+        [I."data"."12"]
+        hor_angle = "276°38'"
+        vert_angle = "1°05.5'"
+        V = 2
+        D = 90.6
+
+        [I."data"."13"]
+        hor_angle = "145°30'"
+        vert_angle = "-1°38.5'"
+        V = 1.36
+        D = 32.4
+
+        [I."data"."14"]
+        hor_angle = "129°32'"
+        vert_angle = "0°16.0'"
+        V = 3
+        D = 136.0
+
+        [I."data"."15"]
+        hor_angle = "120°26'"
+        vert_angle = "-0°49.5'"
+        V = 2
+        D = 94.8
+
+        [I."data"."16"]
+        hor_angle = "35°01'"
+        vert_angle = "3°02.0'"
+        V = 1.36
+        D = 60.1
+
+        [I."data"."17"]
+        hor_angle = "92°27'"
+        vert_angle = "-0°05.0'"
+        V = 2
+        D = 165.8
+
+        [I."data"."18"]
+        hor_angle = "84°58'"
+        vert_angle = "-0°01.5'"
+        V = 1.36
+        D = 183.6
+
+        [I."data"."19"]
+        hor_angle = "79°59'"
+        vert_angle = "0°31,5'"
+        V = 2.5
+        D = 134.4
+
+        [I."data"."20"]
+        hor_angle = "59°26'"
+        vert_angle = "2°53.0'"
+        V = 2
+        D = 157.9
+
+        [I."data"."21"]
+        hor_angle = "64°03'"
+        vert_angle = "+2°25.0'"
+        V = 1.36
+        D = 214.6
+
 [II]
     i = 1.36
 
@@ -161,6 +228,73 @@ title = "Measurements of horizontal, vertical angles and lengths of the sides of
     r_prev_length = "110.0"
     l_next_length = "197.0"
     r_next_length = "196.4"
+
+    [II."data"]
+        i = 1.51
+        H = 643.48
+        L = "3°07.5'"
+        R = "-3°06.5'"
+        M0 = "+0°0.5'"
+
+        [II."data"."22"]
+        hor_angle = "166°01'"
+        vert_angle = "2°06.5'"
+        V = 2
+        D = 202.1
+
+        [II."data"."23"]
+        hor_angle = "340°30'"
+        vert_angle = "-1°57.0'"
+        V = 1.51
+        D = 40.6
+
+        [II."data"."24"]
+        hor_angle = "162°24'"
+        vert_angle = "2°21.0'"
+        V = 1.51
+        D = 98.1
+
+        [II."data"."25"]
+        hor_angle = "351°00'"
+        vert_angle = "0°28.5'"
+        V = 2
+        D = 112.8
+
+        [II."data"."26"]
+        hor_angle = "297°32'"
+        vert_angle = "-2°00.5'"
+        V = 2
+        D = 70.6
+
+        [II."data"."27"]
+        hor_angle = "48°32'"
+        vert_angle = "-2°14.0'"
+        V = 1.51
+        D = 84.3
+
+        [II."data"."28"]
+        hor_angle = "132°01'"
+        vert_angle = "2°31.0'"
+        V = 3
+        D = 80.1
+
+        [II."data"."29"]
+        hor_angle = "111°02'"
+        vert_angle = "1°32,0'"
+        V = 3
+        D = 56.2
+
+        [II."data"."30"]
+        hor_angle = "90°32'"
+        vert_angle = "-0°24.5'"
+        V = 1.51
+        D = 107.8
+
+        [II."data"."31"]
+        hor_angle = "119°01'"
+        vert_angle = "+1°03.5'"
+        V = 1.51
+        D = 114.8
 
 [III]
     i = 1.52
